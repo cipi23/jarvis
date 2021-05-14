@@ -1,6 +1,6 @@
 from datetime import datetime
 from time import sleep
-import webbrowser
+import subprocess
 import os
 
 def get_date():
@@ -11,9 +11,9 @@ def get_time():
     time = datetime.now().time().strftime("%H %M")
     return time
 
-def make_file(name):
+def make_file(recorded_audio):
     try:
-        os.mknod(name)
+        os.mknod(recorded_audio)
     except Exception:
         print("try again")
 
@@ -29,3 +29,6 @@ def cd(recorded_audio):
     command  = 'cd ' + '/'+recorded_audio.split(' ')[2]
     os.system('gnome-terminal -- bash -c "{}; bash "'.format(command))
 
+def open(recorded_audio):
+    command = recorded_audio.split(' ')[1]
+    subprocess.Popen(command)
