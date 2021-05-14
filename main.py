@@ -4,10 +4,27 @@ from linux_utilities import *
 from response import *
 from programs import *
 from firewall import *
+from log import *
+
 
 while True:
     try:
         recorded_audio = recordAudio()
+
+        if "name" in recorded_audio:
+            speak("My name is Bob")
+  
+        # how are you?
+        if "how are you" in recorded_audio:
+            speak("I am fine...")  
+            # date
+        if "date" in recorded_audio:
+            # get today's date
+            speak("The date is" + get_date()) 
+            # time
+        if "time" in recorded_audio:
+            # get current time 
+            speak("The time is " + get_time())
 
         #set ip for nmap
         if ' set ' in recorded_audio:
@@ -22,7 +39,7 @@ while True:
             grep(recorded_audio)
 
         #linux_utilities module (cat)
-        elif 'cat' in recorded_audio:
+        elif 'cat ' in recorded_audio:
             cat(recorded_audio)
         
         #open a program
@@ -46,6 +63,11 @@ while True:
             ipt_block()
 
 
+        elif 'monitor log' in recorded_audio:
+            log_monitor()
+            
+        elif 'show last log' in recorded_audio:
+            last_log()
 
 
     except Exception:

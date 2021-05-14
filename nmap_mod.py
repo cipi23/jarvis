@@ -34,4 +34,3 @@ def nmap_scan(data,host):
     colored_json = highlight(json.dumps(result, indent=4, sort_keys=True), lexers.JsonLexer(), formatters.TerminalFormatter())
     print("\n\n", colored_json)
 
-nmap_scan('os','localhost')
