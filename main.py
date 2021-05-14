@@ -27,7 +27,7 @@ while True:
         
         #open a program
         elif 'open' in recorded_audio:
-            pass
+            open(recorded_audio)
         
         #open new terminal and change directory
         elif 'go to' in recorded_audio:
