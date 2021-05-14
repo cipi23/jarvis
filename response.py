@@ -1,9 +1,6 @@
-
 from datetime import datetime
-import os
 import webbrowser as wb
 import pyttsx3
-import time
 from linux_utilities import *
 
 
@@ -33,20 +30,7 @@ def reply(text_version):
   if "time" in text_version:
     # get current time 
     speak("The time is " + get_time())
-  """"
-  # search google
-  if "search" in text_version:
-    speak("What do you want me to search for?")
-    keyword = recognize_voice()    
-    if keyword != '':
-      url = "https://google.com/search?q=" + keyword
-      speak("Here are the search results for " + keyword)
-      wb.open(url)
-      sleep(3)
-  """
-  # quit/exit
-  if "quit" in text_version or "exit" in text_version:
-    speak("Ok, I am going to take a nap...")
-    exit()
+  
+
 
     
