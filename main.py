@@ -15,24 +15,16 @@ while True:
             speak("My name is Bob")
   
         # how are you?
-        if "how are you" in recorded_audio:
+        elif 'how are you' in recorded_audio:
             speak("I am fine...")  
-            # date
-        if "date" in recorded_audio:
-            # get today's date
+        
+        # get today's date
+        elif 'date' in recorded_audio:
             speak("The date is" + get_date()) 
-            # time
-        if "time" in recorded_audio:
-            # get current time 
+
+        # get current time 
+        elif 'time' in recorded_audio:
             speak("The time is " + get_time())
-
-        #set ip for nmap
-        if ' set ' in recorded_audio:
-            host = input("What ip do you want to scan? ")
-
-        #nmap module
-        elif 'scan' in recorded_audio:
-            nmap_scan(recorded_audio,host)
         
         #linux_utilitie module (grep)
         elif 'find' in recorded_audio:
@@ -56,19 +48,38 @@ while True:
 
         #open a port from incoming traffic
         elif 'accept' in recorded_audio:
-            ipt_input()
+            ipt_input(recorded_audio)
 
         #close a port
         elif 'block' in recorded_audio:
-            ipt_block()
+            ipt_block(recorded_audio)
 
+        #set ip for nmap
+        elif 'set' in recorded_audio:
+            speak("What ip do you want to scan? ")
+            host = recordAudio()
+            print("the ip is: ",host)
 
+        #nmap module
+        elif 'scan' in recorded_audio:
+            nmap_scan('tcp',host)
+
+        elif 'scam' in recorded_audio:
+            nmap_scan('tcp',host)
+        
+        elif 'come' in recorded_audio:
+            nmap_scan('tcp',host)
+
+        #monitor logs
         elif 'monitor log' in recorded_audio:
             log_monitor()
             
         elif 'show last log' in recorded_audio:
             last_log()
-
+            
+        #iptables route
+        elif 'route' in recorded_audio:
+            ipt_route(recorded_audio)
 
     except Exception:
         print("Bob dont understand you, plz try again...")

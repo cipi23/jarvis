@@ -1,10 +1,28 @@
-import os
-import subprocess
-from linux_utilities import *
-from firewall import *
+import speech_recognition as sr 
 
-#subprocess.Popen('gedit')
-s_log = 'gedit gedit'
-os.system('gnome-terminal -- bash -c "{} "'.format(s_log))
-#os.system('gedit gedit')
-print("hello")
+
+def recordAudio1():
+    # Record Audio
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Say something!")
+        audio = r.listen(source)
+
+    # Speech recognition using Google Speech Recognition
+    data = ""
+    try:
+        # Uses the default API key
+        data = r.recognize_google(audio)
+        if 'Bob' in  data:
+            print("You said: " + data)
+            return data.lower()
+        recordAudio1()
+    except sr.UnknownValueError:
+        print("Google Speech Recognition could not understand audio")
+    except sr.RequestError as e:
+        print("Could not request results from Google Speech Recognition service; {0}".format(e))
+    
+    
+
+while True:
+    print(recordAudio1())
