@@ -1,6 +1,5 @@
 import speech_recognition as sr 
 
-
 def recordAudio():
     # Record Audio
     r = sr.Recognizer()
@@ -20,8 +19,3 @@ def recordAudio():
         print("Could not request results from Google Speech Recognition service; {0}".format(e))
     
     return data.lower()
-"""
-def recordAudio():
-    audio = recordAudio1()
-    if audio.split
-    """
